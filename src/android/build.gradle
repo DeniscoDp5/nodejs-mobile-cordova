@@ -24,7 +24,7 @@ android {
 
     externalNativeBuild {
         cmake {
-            path "src/com/janeasystems/cdvnodejsmobile/jni/CMakeLists.txt"
+            path "src/main/src/com/janeasystems/cdvnodejsmobile/jni/CMakeLists.txt"
         }
     }
 
@@ -211,7 +211,7 @@ if ("1".equals(shouldRebuildNativeModules)) {
             commandLine npmCommandName, '--verbose', 'rebuild', '--build-from-source'
             //environment ('PATH', "${npm_toolchain_add_to_path}" + System.getProperty("path.separator") + "${System.env.PATH}")
             environment ('npm_config_node_engine', 'v8' )
-            environment ('npm_config_nodedir', "${project.projectDir}/src/com/janeasystems/cdvnodejsmobile/jni/libnode/" )
+            environment ('npm_config_nodedir', "${project.projectDir}/src/main/src/com/janeasystems/cdvnodejsmobile/jni/libnode/" )
             String npm_gyp_path_to_use;
             if( file("${rootProject.projectDir}/../../plugins/nodejs-mobile-cordova/node_modules/nodejs-mobile-gyp/bin/node-gyp.js").exists() ) {
                 npm_gyp_path_to_use = "${rootProject.projectDir}/../../plugins/nodejs-mobile-cordova/node_modules/nodejs-mobile-gyp/bin/node-gyp.js";
@@ -286,5 +286,5 @@ if ("1".equals(shouldRebuildNativeModules)) {
 }
 
 cdvPluginPostBuildExtras += { ->
-    android.sourceSets.main.jniLibs.srcDirs += 'src/com/janeasystems/cdvnodejsmobile/jni/libnode/bin/';
+    android.sourceSets.main.jniLibs.srcDirs += 'src/main/src/com/janeasystems/cdvnodejsmobile/jni/libnode/bin/';
 };
